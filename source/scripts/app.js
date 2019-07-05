@@ -7,8 +7,14 @@ require('styles/master.css');
 
 import '@babel/polyfill';
 
+// Imports
+
+import { appInit } from './overlay';
+
 // Load
 
-document.addEventListener( 'DomContentLoaded', function() {
+document.addEventListener( 'DOMContentLoaded', function() {
+
+  appInit();
 
 });

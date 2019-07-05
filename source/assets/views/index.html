@@ -10,6 +10,10 @@
         display: none;
       }
 
+      subhead {
+        display: none;
+      }
+
       main {
         display: none;
       }
@@ -22,9 +26,156 @@
 
     <header>
 
+      <div class="lock">
+
+        <a href="/">Whack-A-Mole</a>
+
+        <p>Highest Score : 0</p>
+
+      </div>
+
     </header>
 
+    <subhead>
+
+      <div class="lock">
+        <button>Quit Game</button>
+      </div>
+
+    </subhead>
+
     <main>
+
+      <overlay-element>
+
+        <introduction-element>
+
+          <section>
+
+            <h1>Welcome to the Whack A Mole Game</h1>
+
+            <div>
+              <h2>Rules:</h2>
+              <ul>
+                <li>Each game is one minute</li>
+                <li>You get 1 point for clicking or touching a mole while it is visible</li>
+              </ul>
+            </div>
+
+            <button class="call-to-action">Let's Play</button>
+
+          </section>
+
+        </introduction-element>
+
+        <summary-element>
+
+          <section>
+
+            <h1>Congratulations</h1>
+            <p>You scored <span class="points-total">0</span> points!</p>
+            <button class="call-to-action">Let's Play Again</button>
+
+          </section>
+
+        </summary-element>
+
+      </overlay-element>
+
+      <mole-game>
+
+        <section>
+
+          <h1 class="sr-only">Whack A Mole Game</h1>
+
+          <div class="lock">
+
+            <mole-wrapper data-active="true">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+            <mole-wrapper data-active="false">
+
+              <button>
+                <span class="sr-only" data-showing="true">mole showing</span>
+                <span class="sr-only" data-hidden="true">mole hidden</span>
+              </button>
+
+            </mole-wrapper>
+
+          </div>
+
+        </section>
+
+      </mole-game>
 
     </main>
 

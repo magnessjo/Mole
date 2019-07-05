@@ -3572,7 +3572,19 @@ eval("module.exports = function (module) {\n  if (!module.webpackPolyfill) {\n  
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/polyfill */ \"./node_modules/@babel/polyfill/lib/index.js\");\n/* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);\n// Requires\n__webpack_require__(/*! styles/master.css */ \"./source/styles/master.css\"); // Polyfills\n\n\n // Load\n\ndocument.addEventListener('DomContentLoaded', function () {});\n\n//# sourceURL=webpack:///./source/scripts/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/polyfill */ \"./node_modules/@babel/polyfill/lib/index.js\");\n/* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _overlay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./overlay */ \"./source/scripts/overlay.js\");\n// Requires\n__webpack_require__(/*! styles/master.css */ \"./source/styles/master.css\"); // Polyfills\n\n\n // Imports\n\n // Load\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  Object(_overlay__WEBPACK_IMPORTED_MODULE_1__[\"appInit\"])();\n});\n\n//# sourceURL=webpack:///./source/scripts/app.js?");
+
+/***/ }),
+
+/***/ "./source/scripts/overlay.js":
+/*!***********************************!*\
+  !*** ./source/scripts/overlay.js ***!
+  \***********************************/
+/*! exports provided: showSummary, appInit */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showSummary\", function() { return showSummary; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"appInit\", function() { return appInit; });\n// Variables\nvar overlay = document.querySelector('overlay-element');\nvar introduction = overlay.querySelector('introduction-element');\nvar summary = overlay.querySelector('summary-element');\nvar buttons = Array.from(overlay.querySelectorAll('button'));\nvar pointsTotal = overlay.querySelector('.points-total'); // Private : Cleanup Events\n\nfunction actionCleanup() {\n  buttons.forEach(function (button) {\n    button.removeEventListener('click', startAction);\n  });\n} // Private : Events Listeners\n\n\nfunction actionEvents() {\n  buttons.forEach(function (button) {\n    button.addEventListener('click', startAction);\n  });\n} // Private : Close Overlays and Start Game\n\n\nfunction startAction() {\n  overlay.style.display = 'none';\n  introduction.style.display = 'none';\n  actionCleanup();\n} // Show Summary and add events\n\n\nfunction showSummary() {\n  var amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;\n  actionEvents();\n  overlay.style.display = 'flex';\n  summary.style.display = 'block';\n  pointsTotal.innerHTML = amount;\n} // Init\n\nfunction appInit() {\n  actionEvents();\n}\n\n//# sourceURL=webpack:///./source/scripts/overlay.js?");
 
 /***/ }),
 
