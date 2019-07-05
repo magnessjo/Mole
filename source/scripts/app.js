@@ -10,11 +10,13 @@ import '@babel/polyfill';
 // Imports
 
 import { appInit } from './overlay';
+import { headerInit } from './header';
 
 // Load
 
 document.addEventListener( 'DOMContentLoaded', function() {
 
   appInit();
+  headerInit();
 
 });

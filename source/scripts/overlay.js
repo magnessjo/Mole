@@ -1,4 +1,7 @@
 
+// Imports
+
+import { startGame } from './game';
 
 // Variables
 
@@ -39,6 +42,7 @@ function startAction() {
   overlay.style.display = 'none';
   introduction.style.display = 'none';
   actionCleanup();
+  startGame();
 
 }
 
