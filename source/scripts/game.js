@@ -3,6 +3,7 @@
 
 import { headerScore } from './header';
 import { showSummary } from './overlay';
+import session from './session';
 
 // Variables
 
@@ -10,11 +11,12 @@ const container = document.querySelector( 'mole-game' );
 const moles = Array.from( container.querySelectorAll( 'mole-wrapper' ) );
 const numberOfMoles = moles.length;
 
-const gameTime = 30;
+const gameTime = 10;
 const miniumShowTime = 800;
 const maxiumShowTime = 1600;
 
 let currentActiveMole;
+let timerAnimation;
 let timeoutAnimaton;
 let numberCorrect = 0;
 
@@ -23,6 +25,7 @@ let numberCorrect = 0;
 function cleanup() {
 
   clearInterval( timeoutAnimaton );
+  clearInterval( timerAnimation );
   cleanupMoleEvents( currentActiveMole );
   currentActiveMole.setAttribute( 'data-active', false );
   currentActiveMole = null;
@@ -34,7 +37,9 @@ function cleanup() {
 function moleEvent() {
 
   numberCorrect++;
+
   clearInterval( timeoutAnimaton );
+  cleanupMoleEvents( currentActiveMole );
   currentActiveMole.setAttribute( 'data-active', false );
   showMoles();
 
@@ -90,7 +95,7 @@ function timer() {
 
   function counter( iterator ) {
 
-    setTimeout( () => {
+    timerAnimation = setTimeout( () => {
 
       iterator--;
 
@@ -113,6 +118,7 @@ function timer() {
 
 export function startGame() {
 
+  numberCorrect = 0;
   showMoles();
   timer();
 
@@ -122,8 +128,23 @@ export function startGame() {
 
 export function stopGame() {
 
+  const store = session.get();
+
   cleanup();
-  headerScore( numberCorrect );
   showSummary( numberCorrect );
+
+  if ( store ) {
+
+    if ( numberCorrect > store.amount ) {
+      session.set( numberCorrect );
+    }
+
+  } else {
+
+    session.set( numberCorrect );
+
+  }
+
+  headerScore( numberCorrect );
 
 }

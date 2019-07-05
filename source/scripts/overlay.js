@@ -50,6 +50,8 @@ function startAction() {
 
 export function showSummary( amount = 0 ) {
 
+  console.log( amount );
+
   actionEvents();
   overlay.style.display = 'flex';
   summary.style.display = 'block';
