@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700|Playfair+Display&display=swap);
+
+/* Dependencies */
+:root {
+
+  --sans  : 'Lato', Helvetica, Arial, sans-serif;
+  --serif : 'Playfair Display', Georgia, Times, serif;
+
+  --white       : #fff;
+  --black       : #404040;
+
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.2em
+
+}
+@media (min-width: 650px) {
+:root {
+    font-size: 16px
+
+}
+  }
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  -ms-scroll-chaining: none;
+      overscroll-behavior: none;
+}
+main {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  min-width: 300px;
+}
+section {
+  position: relative;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0;
+  font-size: 17px;
+  font-weight: normal;
+}
+p {
+  margin-bottom: 20px
+
+}
+p:last-of-type {
+    margin-bottom: 0;
+  }
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+ul {
+  padding-left: 30px;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
+/* Components */
+

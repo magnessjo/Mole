@@ -1,0 +1,20 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Playfair+Display&display=swap');
+
+:root {
+
+  --sans  : 'Lato', Helvetica, Arial, sans-serif;
+  --serif : 'Playfair Display', Georgia, Times, serif;
+
+  --white       : #fff;
+  --black       : #404040;
+
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.2em;
+
+  @media (--large-min) {
+    font-size: 16px;
+  }
+
+}
