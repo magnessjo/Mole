@@ -1,0 +1,104 @@
+
+/* Basic Mole Grid
+
+  Use custom element decorations for readability
+  Create a basic grid using flexbox.
+
+*/
+
+mole-game {
+  display: block;
+  padding: 40px 0;
+
+  & .lock {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      width: calc(50% - 15px);
+      margin-top: 30px;
+      margin-left: 30px;
+
+      @media (--tablet-min) {
+        width: calc(33.3% - 20px);
+      }
+
+      &:first-of-type,
+      &:nth-of-type(2) {
+        margin-top: 0;
+      }
+
+      &:nth-of-type(3) {
+
+        @media (--tablet-min) {
+          margin-top: 0;
+        }
+
+      }
+
+      &:nth-of-type(odd) {
+
+        @media (--large-max) {
+          margin-left: 0;
+        }
+
+      }
+
+      &:nth-of-type(3n + 1) {
+
+        @media (--tablet-min) {
+          margin-left: 0;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+mole-game mole-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100px;
+
+  @media (--tablet-min) {
+    min-height: 80px;
+    height: calc(30vh - 30px);
+  }
+
+  & button {
+    display: block;
+    width: 80%;
+    height: 80%;
+    cursor: pointer;
+  }
+
+  & span {
+    display: none;
+  }
+
+}
+
+mole-game mole-wrapper[data-active="false"] {
+  background-image: url(/images/inactive.png);
+
+  & [data-hidden="true"] {
+    display: block;
+  }
+
+}
+
+mole-game mole-wrapper[data-active="true"] {
+  background-image: url(/images/active.png);
+
+  & [data-showing="true"] {
+    display: block;
+  }
+
+}

@@ -1,0 +1,28 @@
+
+header {
+  display: block;
+  border-bottom: 1px solid rgba( 255, 255, 255, .3);
+  height: 60px;
+}
+
+header .lock {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  & p {
+    margin-left: auto;
+    margin-bottom: 0;
+  }
+
+}
+
+header a {
+  color: var(--white);
+  font-family: var(--serif);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-style: italic;
+  font-size: 18px;
+  font-size: calc( 18px + .5vw);
+}

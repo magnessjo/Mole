@@ -9,11 +9,15 @@
   --white       : #fff;
   --black       : #404040;
 
+  --green       : #057b3e;
+
   font-family: 'Lato', Helvetica, Arial, sans-serif;
 
   font-family: var(--sans);
   font-size: 14px;
-  line-height: 1.2em
+  line-height: 1.2em;
+  color: #fff;
+  color: var(--white)
 
 }
 @media (min-width: 650px) {
@@ -31,6 +35,8 @@
 body {
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
+  background-color: #057b3e;
+  background-color: var(--green);
 }
 main {
   overflow: hidden;
@@ -59,12 +65,244 @@ a {
 img {
   max-width: 100%;
 }
-ul {
-  padding-left: 30px;
+li {
+  list-style: none;
 }
 button {
   border: none;
   background-color: transparent;
 }
+/* Common */
+.lock {
+  padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto
+
+}
+@media (min-width: 768px) {
+.lock {
+    padding: 0 30px
+
+}
+  }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+.call-to-action {
+  background-color: #057b3e;
+  background-color: var(--green);
+  color: #fff;
+  color: var(--white);
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 /* Components */
+header {
+  display: block;
+  border-bottom: 1px solid rgba( 255, 255, 255, .3);
+  height: 60px;
+}
+header .lock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%
+
+}
+header .lock p {
+    margin-left: auto;
+    margin-bottom: 0;
+  }
+header a {
+  color: #fff;
+  color: var(--white);
+  font-family: 'Playfair Display', Georgia, Times, serif;
+  font-family: var(--serif);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-style: italic;
+  font-size: 18px;
+  font-size: calc( 18px + .5vw);
+}
+subhead {
+  display: block;
+  text-align: right;
+  font-weight: 700;
+  text-transform: uppercase
+
+}
+subhead button {
+    color: #fff;
+    color: var(--white);
+    cursor: pointer;
+  }
+/* Basic Mole Grid
+
+  Use custom element decorations for readability
+  Create a basic grid using flexbox.
+
+*/
+mole-game {
+  display: block;
+  padding: 40px 0
+
+}
+mole-game .lock {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap
+
+  }
+mole-game .lock > * {
+      width: calc(50% - 15px);
+      margin-top: 30px;
+      margin-left: 30px
+
+    }
+@media (min-width: 768px) {
+mole-game .lock > * {
+        width: calc(33.3% - 20px)
+
+    }
+      }
+mole-game .lock > *:first-of-type,
+      mole-game .lock > *:nth-of-type(2) {
+        margin-top: 0;
+      }
+@media (min-width: 768px) {
+mole-game .lock > *:nth-of-type(3) {
+          margin-top: 0
+
+      }
+        }
+@media (max-width: 767px) {
+mole-game .lock > *:nth-of-type(odd) {
+          margin-left: 0
+
+      }
+        }
+@media (min-width: 768px) {
+mole-game .lock > *:nth-of-type(3n + 1) {
+          margin-left: 0
+
+      }
+        }
+mole-game mole-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100px
+
+}
+@media (min-width: 768px) {
+mole-game mole-wrapper {
+    min-height: 80px;
+    height: calc(30vh - 30px)
+
+}
+  }
+mole-game mole-wrapper button {
+    display: block;
+    width: 80%;
+    height: 80%;
+    cursor: pointer;
+  }
+mole-game mole-wrapper span {
+    display: none;
+  }
+mole-game mole-wrapper[data-active="false"] {
+  background-image: url(/images/inactive.png)
+
+}
+mole-game mole-wrapper[data-active="false"] [data-hidden="true"] {
+    display: block;
+  }
+mole-game mole-wrapper[data-active="true"] {
+  background-image: url(/images/active.png)
+
+}
+mole-game mole-wrapper[data-active="true"] [data-showing="true"] {
+    display: block;
+  }
+overlay-element {
+  background-color: #fff;
+  background-color: var(--white);
+  position: fixed;
+  padding: 50px;
+  overflow-y: scroll;
+  height: calc(100vh - 40px);
+  width: calc(100vw - 40px);
+  top: 20px;
+  left: 20px;
+  z-index: 9;
+  -webkit-box-shadow: 0 0 1000px 1000px rgba( 0, 0, 0, .6);
+          box-shadow: 0 0 1000px 1000px rgba( 0, 0, 0, .6);
+  color: #404040;
+  color: var(--black);
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center
+
+}
+overlay-element h1 {
+    font-size: calc( 22px + .5vw);
+    font-family: 'Playfair Display', Georgia, Times, serif;
+    font-family: var(--serif);
+    margin-bottom: 60px;
+  }
+overlay-element .call-to-action {
+    margin-top: 60px;
+  }
+overlay-element introduction-element h2 {
+    font-size: calc( 18px + .2vw);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+overlay-element introduction-element section > div {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left
+
+  }
+overlay-element introduction-element section > div li {
+      margin-bottom: 5px;
+    }
+overlay-element introduction-element section > div li:last-of-type {
+      margin-bottom: 0;
+    }
+overlay-element summary-element {
+  display: none;
+}
 

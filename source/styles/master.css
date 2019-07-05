@@ -5,4 +5,15 @@
 @import './dependencies/queries.css';
 @import './dependencies/reset.css';
 
+/* Common */
+
+@import './common/lock.css';
+@import './common/sr-only.css';
+@import './common/call-to-action.css';
+
 /* Components */
+
+@import './components/header.css';
+@import './components/subhead.css';
+@import './components/mole-game.css';
+@import './components/overlay-element.css';

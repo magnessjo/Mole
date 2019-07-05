@@ -9,9 +9,12 @@
   --white       : #fff;
   --black       : #404040;
 
+  --green       : #057b3e;
+
   font-family: var(--sans);
   font-size: 14px;
   line-height: 1.2em;
+  color: var(--white);
 
   @media (--large-min) {
     font-size: 16px;
