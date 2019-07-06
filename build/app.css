@@ -270,6 +270,13 @@ mole-game mole-wrapper[data-active="true"] {
 mole-game mole-wrapper[data-active="true"] [data-showing="true"] {
     display: block;
   }
+mole-game mole-timer {
+  display: block;
+  text-align: center;
+  color: #fff;
+  color: var(--white);
+  font-size: 40px;
+}
 /* Overlay Elements and it's children
 
   Overlays share some common styling for headlines

@@ -102,3 +102,10 @@ mole-game mole-wrapper[data-active="true"] {
   }
 
 }
+
+mole-game mole-timer {
+  display: block;
+  text-align: center;
+  color: var(--white);
+  font-size: 40px;
+}

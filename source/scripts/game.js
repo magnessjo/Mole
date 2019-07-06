@@ -9,6 +9,7 @@ import session from './session';
 
 const container = document.querySelector( 'mole-game' );
 const moles = Array.from( container.querySelectorAll( 'mole-wrapper' ) );
+const domTimer = container.querySelector( 'mole-timer' );
 const numberOfMoles = moles.length;
 
 const gameTime = 10;
@@ -123,7 +124,9 @@ function timer() {
 
       if ( iterator > 0 ) {
         counter( iterator );
+        domTimer.innerHTML = iterator;
       } else {
+        domTimer.innerHTML = 0;
         stopGame();
       }
 
@@ -143,6 +146,7 @@ export function startGame() {
   numberCorrect = 0;
   showMoles();
   timer();
+  domTimer.innerHTML = gameTime;
 
 }
 
@@ -155,7 +159,7 @@ export function stopGame() {
   cleanup();
   showSummary( numberCorrect );
 
-  // Set localstorage session for highest points if avilable 
+  // Set localstorage session for highest points if avilable
 
   if ( store ) {
 
