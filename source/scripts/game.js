@@ -5,20 +5,25 @@ import { headerScore } from './header';
 import { showSummary } from './overlay';
 import session from './session';
 
-// Variables
+// Variables : DOM
 
 const container = document.querySelector( 'mole-game' );
 const moles = Array.from( container.querySelectorAll( 'mole-wrapper' ) );
 const domTimer = container.querySelector( 'mole-timer' );
 const numberOfMoles = moles.length;
 
-const gameTime = 10;
-const miniumShowTime = 800;
-const maxiumShowTime = 1600;
+// Variables : Game Settings
 
-let currentActiveMole;
-let timerAnimation;
-let timeoutAnimaton;
+const gameTime = 20;
+const miniumShowTime = 1200;
+const maxiumShowTime = 2000;
+
+// Variables : Global References
+
+const hashMap = [];
+let timerAnimationTimeout;
+let moleAnimatonTimeout;
+let moleEventReference;
 let numberCorrect = 0;
 
 // Private : Cleanup
@@ -27,50 +32,60 @@ function cleanup() {
 
   // Stop Timeouts
 
-  clearInterval( timeoutAnimaton );
-  clearInterval( timerAnimation );
+  clearInterval( moleAnimatonTimeout );
+  clearInterval( timerAnimationTimeout );
 
-  // Remove Events
+  hashMap.forEach( ( reference, i ) => {
 
-  cleanupMoleEvents( currentActiveMole );
+    const mole = moles[ reference ];
 
-  // Reset the board
+    // Reset the board
 
-  currentActiveMole.setAttribute( 'data-active', false );
-  currentActiveMole = null;
+    mole.setAttribute( 'data-active', false );
+    mole.removeEventListener( 'click', moleEventReference );
 
-}
+    if ( i === hashMap.length - 1 ) hashMap.length = 0;
 
-// Private : Mole Events
-
-function moleEvent() {
-
-  // Increase count correct
-
-  numberCorrect++;
-
-  // Clear timeout and restart the count
-
-  clearInterval( timeoutAnimaton );
-  cleanupMoleEvents( currentActiveMole );
-  currentActiveMole.setAttribute( 'data-active', false );
-  showMoles();
+  });
 
 }
 
-// Private : Add Active Events
+// Private : Set Mole
 
-function addMoleEvents( mole ) {
+function setMole( mole, reference, time ) {
 
-  mole.addEventListener( 'click', moleEvent);
+  // Scoped : Mole Event
 
-}
+  moleEventReference = function moleEvent() {
 
-// Private : Cleanup Mole Events
+    // Increase count correct
 
-function cleanupMoleEvents( mole ) {
+    numberCorrect++;
 
-  mole.removeEventListener( 'click', moleEvent);
+    // Clear timeout and restart the count
+
+    mole.setAttribute( 'data-active', false );
+    mole.removeEventListener( 'click', moleEvent );
+
+  }
+
+  // Set Active Mole with click event
+
+  mole.setAttribute( 'data-active', true );
+  mole.addEventListener( 'click', moleEventReference );
+  hashMap.push( reference );
+
+  // Recursively show moles based on random time
+
+  setTimeout( ( currentMole, ref ) => {
+
+    const hashReference = hashMap.findIndex( ( currentMole ) => currentMole === ref );
+
+    currentMole.setAttribute( 'data-active', false );
+    currentMole.removeEventListener( 'click', moleEventReference );
+    hashMap.splice( hashReference, 1 );
+
+  }, time, mole, reference );
 
 }
 
@@ -83,24 +98,19 @@ function showMoles() {
   const moleToShow = Math.floor( Math.random() * numberOfMoles );
   const time = Math.random() * ( maxiumShowTime - miniumShowTime ) + miniumShowTime;
   const activeMole = moles[moleToShow];
+  const isShowing = hashMap.findIndex( ( mole ) => mole === moleToShow );
 
   // Check to see if the current mole is upcoming mole
 
-  if ( currentActiveMole != activeMole ) {
+  if ( isShowing < 0 ) {
 
-    // Set Active Mole with click event
+    setMole( activeMole, moleToShow, time );
 
-    currentActiveMole = activeMole;
-    activeMole.setAttribute( 'data-active', true );
-    addMoleEvents( activeMole );
+    // Show a new Mole every second
 
-    // Recursively show moles based on random time
-
-    timeoutAnimaton = setTimeout( () => {
-      activeMole.setAttribute( 'data-active', false );
-      cleanupMoleEvents( activeMole );
+    moleAnimatonTimeout = setTimeout( () => {
       showMoles();
-    }, time);
+    }, 1000);
 
   } else {
 
@@ -118,7 +128,7 @@ function timer() {
 
   function counter( iterator ) {
 
-    timerAnimation = setTimeout( () => {
+    timerAnimationTimeout = setTimeout( () => {
 
       iterator--;
 
