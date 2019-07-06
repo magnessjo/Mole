@@ -34,16 +34,15 @@
   "babel": {
     "presets": [
       [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "browsers": [
-              "Explorer 11"
-            ]
-          }
-        }
+        "@babel/preset-env"
       ]
     ],
     "plugins": []
-  }
+  },
+  "browserslist": [
+    "last 1 version",
+    "> .1%",
+    "not dead",
+    "IE 10"
+  ]
 }
