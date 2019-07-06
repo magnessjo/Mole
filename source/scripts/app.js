@@ -16,6 +16,8 @@ import { headerInit } from './header';
 
 document.addEventListener( 'DOMContentLoaded', function() {
 
+  // Initialize App
+
   appInit();
   headerInit();
 

@@ -1,4 +1,10 @@
 
+/* Common Call To Action
+
+  Global class that can be extended with attributes
+
+*/
+
 .call-to-action {
   background-color: var(--green);
   color: var(--white);

@@ -69,7 +69,7 @@ mole-game mole-wrapper {
 
   @media (--tablet-min) {
     min-height: 80px;
-    height: calc(30vh - 30px);
+    height: 25vh;
   }
 
   & button {

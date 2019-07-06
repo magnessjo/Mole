@@ -15,6 +15,8 @@ const pointsTotal = overlay.querySelector( '.points-total' );
 
 function actionCleanup() {
 
+  // Remove events when overlay is closed 
+
   buttons.forEach( ( button ) => {
 
     button.removeEventListener( 'click', startAction);
@@ -26,6 +28,8 @@ function actionCleanup() {
 // Private : Events Listeners
 
 function actionEvents() {
+
+  // For each button in header, start game when clicked.
 
   buttons.forEach( ( button ) => {
 
@@ -49,8 +53,6 @@ function startAction() {
 // Show Summary and add events
 
 export function showSummary( amount = 0 ) {
-
-  console.log( amount );
 
   actionEvents();
   overlay.style.display = 'flex';

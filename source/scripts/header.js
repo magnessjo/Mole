@@ -14,6 +14,8 @@ const highestPoints = document.querySelector( '.high-score' );
 
 export function headerInit(){
 
+  // Add event for quit game button
+
   quitButton.addEventListener( 'click', event => {
 
     const numberCorrect = stopGame();
@@ -30,6 +32,8 @@ export function headerInit(){
 // Export : Set High Score
 
 export function headerScore( correct ){
+
+  // Set High score if avilable
 
   const store = session.get();
 

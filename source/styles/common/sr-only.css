@@ -1,4 +1,10 @@
 
+/* SR only bootstrap class
+
+  Famous classes to remove content visually
+
+*/
+
 .sr-only {
   position: absolute;
   width: 1px;

@@ -24,9 +24,17 @@ let numberCorrect = 0;
 
 function cleanup() {
 
+  // Stop Timeouts
+
   clearInterval( timeoutAnimaton );
   clearInterval( timerAnimation );
+
+  // Remove Events
+
   cleanupMoleEvents( currentActiveMole );
+
+  // Reset the board
+
   currentActiveMole.setAttribute( 'data-active', false );
   currentActiveMole = null;
 
@@ -36,7 +44,11 @@ function cleanup() {
 
 function moleEvent() {
 
+  // Increase count correct
+
   numberCorrect++;
+
+  // Clear timeout and restart the count
 
   clearInterval( timeoutAnimaton );
   cleanupMoleEvents( currentActiveMole );
@@ -65,15 +77,23 @@ function cleanupMoleEvents( mole ) {
 
 function showMoles() {
 
+  // Get Random Mole to show and Random time to show
+
   const moleToShow = Math.floor( Math.random() * numberOfMoles );
   const time = Math.random() * ( maxiumShowTime - miniumShowTime ) + miniumShowTime;
   const activeMole = moles[moleToShow];
 
+  // Check to see if the current mole is upcoming mole
+
   if ( currentActiveMole != activeMole ) {
+
+    // Set Active Mole with click event
 
     currentActiveMole = activeMole;
     activeMole.setAttribute( 'data-active', true );
     addMoleEvents( activeMole );
+
+    // Recursively show moles based on random time
 
     timeoutAnimaton = setTimeout( () => {
       activeMole.setAttribute( 'data-active', false );
@@ -92,6 +112,8 @@ function showMoles() {
 // Private : Gamer Timer
 
 function timer() {
+
+  // Recursively count down the timer for the game
 
   function counter( iterator ) {
 
@@ -132,6 +154,8 @@ export function stopGame() {
 
   cleanup();
   showSummary( numberCorrect );
+
+  // Set localstorage session for highest points if avilable 
 
   if ( store ) {
 

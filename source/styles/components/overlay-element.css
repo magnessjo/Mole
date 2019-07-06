@@ -1,4 +1,10 @@
 
+/* Overlay Elements and it's children
+
+  Overlays share some common styling for headlines
+
+*/
+
 overlay-element {
   background-color: var(--white);
   position: fixed;

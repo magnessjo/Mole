@@ -12,6 +12,8 @@ function set( amount ) {
     timestamp: new Date().getTime()
   }
 
+  // Add local storage reference for app with timestamp to check for relevant data if needed 
+
   localStorage.setItem( sessionKey, JSON.stringify( obj ) );
 
 }
