@@ -14,7 +14,7 @@ const numberOfMoles = moles.length;
 
 // Variables : Game Settings
 
-const gameTime = 20;
+const gameTime = 30;
 const miniumShowTime = 1200;
 const maxiumShowTime = 2000;
 
@@ -110,7 +110,7 @@ function showMoles() {
 
     moleAnimatonTimeout = setTimeout( () => {
       showMoles();
-    }, 1000);
+    }, 700);
 
   } else {
 
