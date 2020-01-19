@@ -5,8 +5,6 @@ Example project of Whack A Mole Game Built with vanilla JS.
 
 ## View
 
-http://mole.joshmagness.com/
-
 Example build folder is included
 
 ## Build
